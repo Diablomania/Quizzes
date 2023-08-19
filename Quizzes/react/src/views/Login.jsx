@@ -18,7 +18,7 @@ export default function Login() {
         setErrors(null);
         axiosClient.post('/login', payload)
             .then(({data})=> {
-                setToken(data.user)
+                setUser(data.user)
                 setToken(data.token)
             })
             .catch(err => {

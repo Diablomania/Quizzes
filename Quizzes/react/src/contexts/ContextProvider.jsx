@@ -1,9 +1,11 @@
 import { createContext, useContext, useState } from "react";
 
 const StateContext = createContext({
+    currentQuiz: null,
     currentUser: null,
     token: null,
     notification: null,
+    setQuiz: () => {},
     setUser: () => {},
     setToken: () => {},
     setNotification: () => {},
@@ -11,6 +13,7 @@ const StateContext = createContext({
 
 export const ContextProvider = ({children}) => {
     const [user, setUser] = useState({});
+    const [quiz, setQuiz] = useState({});
     const [notification, _setNotification] = useState('');
     const [token, _setToken] = useState(localStorage.getItem('ACCESS_TOKEN'));
 
@@ -33,8 +36,10 @@ export const ContextProvider = ({children}) => {
     return (
         <StateContext.Provider value={{
             user,
+            quiz,
             token,
             setUser,
+            setQuiz,
             setToken,
             notification,
             setNotification

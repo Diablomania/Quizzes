@@ -23,7 +23,7 @@ export default function Signup() {
         }
         axiosClient.post('/signup', payload)
             .then(({data})=> {
-                setToken(data.user)
+                setUser(data.user)
                 setToken(data.token)
             })
             .catch(err => {

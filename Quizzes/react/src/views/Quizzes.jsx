@@ -3,34 +3,34 @@ import { Link } from "react-router-dom";
 import axiosClient from "../axios-client";
 import { useStateContext } from "../contexts/ContextProvider";
 
-export default function User() {
-    const [users, setUsers] = useState([]);
+export default function Quizzes() {
+    const [quizzes, setQuizzes] = useState([]);
     const [loading, setLoading] = useState(false);
     const {setNotification} = useStateContext();
 
     useEffect(()=>{
-        getUsers();
+        getQuizzes();
     },[])
 
-    const onDelete = (u) => {
-        if (!window.confirm("Are you sure you want to delete this user?")) {
+    const onDelete = (q) => {
+        if (!window.confirm("Are you sure you want to delete this quiz?")) {
             return
         }
-        axiosClient.delete(`/users/${u.id}`)
+        axiosClient.delete(`/quizzes/${q.id}`)
             .then(()=>{
-                setNotification("User was successfully deleted")
+                setNotification("Quiz was successfully deleted")
                 //TODO show notification
-                getUsers()
+                getQuizzes()
             })
     }
 
-    const getUsers = ()=>{
+    const getQuizzes = ()=>{
         setLoading(true);
-        axiosClient.get('/users')
+        axiosClient.get('/quizzes')
         .then(({data}) => {
             setLoading(false);
             console.log(data);
-            setUsers(data.data)
+            setQuizzes(data.data)
         })
         .catch(()=>{
             setLoading(false)
@@ -40,19 +40,18 @@ export default function User() {
     return (
         <div>
             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                <h1>Users</h1>
-                <Link to="/user/new" className="btn-add">Add new</Link>
-                <Link to="/quizzes" className="btn-add">All quizzes</Link>
+                <h1>Quizzes</h1>
+                <Link to="/quizzes/new" className="btn-add">Add new</Link>
             </div>
             <div className="card animated fadeInDown">
                 <table>
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Create Date</th>
-                            <th>Actions</th>
+                            <th>Title</th>
+                            <th>Subject</th>
+                            <th>About</th>
+                            <th>Max Score</th>
                         </tr>
                     </thead>
                     {loading && 
@@ -64,16 +63,16 @@ export default function User() {
                     }
                     {!loading &&
                         <tbody>
-                            {users.map(u => (
+                            {quizzes.map(q => (
                                 <tr>
-                                    <td>{u.id}</td>
-                                    <td>{u.name}</td>
-                                    <td>{u.email}</td>
-                                    <td>{u.created_at}</td>
+                                    <td>{q.id}</td>
+                                    <td>{q.title}</td>
+                                    <td>{q.subject}</td>
+                                    <td>{q.about}</td>
                                     <td>
-                                        <Link className="btn-edit" to={'/user/'+u.id}>Edit</Link>
+                                        <Link className="btn-edit" to={'/quizzes/'+q.id}>Edit</Link>
                                         &nbsp;
-                                        <button onClick={ev => onDelete(u)} className="btn-delete">Delete</button>
+                                        <button onClick={ev => onDelete(q)} className="btn-delete">Delete</button>
                                     </td>
                                 </tr>
                             ))}
