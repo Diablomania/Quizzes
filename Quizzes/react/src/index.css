@@ -241,3 +241,13 @@ table > tbody > tr > td {
         transform: translateY(0);
     }
 }
+
+.quiz_block {
+    box-shadow: 5px 0px 15px #212121;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+.quiz_form {
+    margin-bottom: 10px;
+    padding: 5px;
+}

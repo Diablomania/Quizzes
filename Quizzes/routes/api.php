@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Api\UserController;
 use \App\Http\Controllers\Api\QuizController;
+use \App\Http\Controllers\Api\QuestionController;
+use \App\Http\Controllers\Api\AnswerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +26,17 @@ Route::middleware('auth:sanctum')->group(function() {
         Route::get('/quizzes', function (Request $request) {
         return $request->quizzes();
     });
+    Route::get('/question', function (Request $request) {
+        return $request->question();
+    });
+    Route::get('/answer', function (Request $request) {
+        return $request->answer();
+    });
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::apiResource('/users', UserController::class);
         Route::apiResource('/quizzes', QuizController::class);
+        Route::apiResource('/question', QuestionController::class);
+        Route::apiResource('/answer', AnswerController::class);
     });
 
 
