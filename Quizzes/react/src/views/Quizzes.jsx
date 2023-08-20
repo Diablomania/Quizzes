@@ -70,6 +70,8 @@ export default function Quizzes() {
                                     <td>{q.subject}</td>
                                     <td>{q.about}</td>
                                     <td>
+                                        <Link className="btn-start" to={'/start_quiz/'+q.id}>Start</Link>
+                                        &nbsp;
                                         <Link className="btn-edit" to={'/quizzes/'+q.id}>Edit</Link>
                                         &nbsp;
                                         <button onClick={ev => onDelete(q)} className="btn-delete">Delete</button>

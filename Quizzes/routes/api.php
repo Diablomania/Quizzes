@@ -7,6 +7,7 @@ use \App\Http\Controllers\Api\UserController;
 use \App\Http\Controllers\Api\QuizController;
 use \App\Http\Controllers\Api\QuestionController;
 use \App\Http\Controllers\Api\AnswerController;
+use \App\Http\Controllers\Api\ResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,11 +33,15 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::get('/answer', function (Request $request) {
         return $request->answer();
     });
+    Route::get('/result', function (Request $request) {
+        return $request->result();
+    });
         Route::post('/logout', [AuthController::class, 'logout']);
         Route::apiResource('/users', UserController::class);
         Route::apiResource('/quizzes', QuizController::class);
         Route::apiResource('/question', QuestionController::class);
         Route::apiResource('/answer', AnswerController::class);
+        Route::apiResource('/result', ResultController::class);
     });
 
 

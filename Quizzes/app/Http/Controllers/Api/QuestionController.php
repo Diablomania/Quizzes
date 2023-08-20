@@ -17,7 +17,7 @@ class QuestionController extends Controller
     public function index()
     {
         return QuestionResource::collection(
-            Question::query()->orderBy('id', 'desc')->paginate(10)
+            Question::query()->orderBy('id', 'desc')->paginate(100)
         );
     }
 

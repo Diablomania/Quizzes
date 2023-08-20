@@ -17,7 +17,7 @@ class ResultController extends Controller
     public function index()
     {
         return ResultResource::collection(
-            Result::query()->orderBy('id', 'desc')->paginate(10)
+            Result::query()->orderBy('id', 'desc')->paginate(100)
         );
     }
 

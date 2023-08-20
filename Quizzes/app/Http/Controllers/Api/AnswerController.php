@@ -17,7 +17,7 @@ class AnswerController extends Controller
     public function index()
     {
         return AnswerResource::collection(
-            Answer::query()->orderBy('id', 'desc')->paginate(10)
+            Answer::query()->orderBy('id', 'desc')->paginate(100)
         );
     }
 

@@ -6,6 +6,8 @@ import NotFound from './views/NotFound';
 import Dashboard from './views/Dashboard';
 import UserForm from './views/UserForm';
 import QuizForm from './views/QuizForm';
+import StartQuiz from './views/StartQuiz';
+import NewQuizForm from './views/NewQuizForm';
 import DefaultLayout from './components/DefaultLayout';
 import GuestLayout from './components/GuestLayout';
 import Quizzes from './views/Quizzes';
@@ -29,11 +31,15 @@ const router = createBrowserRouter([
             },
             {
                 path: '/quizzes/new',
-                element: <QuizForm key="quizCreate" />
+                element: <NewQuizForm key="quizCreate" />
             },
             {
                 path: '/quizzes/:id',
                 element: <QuizForm key="quizUpdate"/>
+            },
+            {
+                path: '/start_quiz/:id',
+                element: <StartQuiz key="quizStart"/>
             },
             {
                 path: '/user',

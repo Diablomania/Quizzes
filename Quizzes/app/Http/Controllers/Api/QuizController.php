@@ -17,7 +17,7 @@ class QuizController extends Controller
     public function index()
     {
         return QuizResource::collection(
-            Quiz::query()->orderBy('id', 'desc')->paginate(10)
+            Quiz::query()->orderBy('id', 'desc')->paginate(100)
         );
     }
 
