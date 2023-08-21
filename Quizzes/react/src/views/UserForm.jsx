@@ -13,6 +13,7 @@ export default function UserForm() {
     const [user, setUser] = useState({
         id: null,
         name: '',
+        role: '',
         email: '',
         password: '',
         password_confirmation: ''
@@ -81,6 +82,7 @@ export default function UserForm() {
                 {!loading && 
                     <form onSubmit={onSubmit}>
                         <input value={user.name} onChange={ev => setUser({...user, name: ev.target.value})} placeholder="Name" />
+                        <input value={user.role} onChange={ev => setUser({...user, role: ev.target.value})} placeholder="Role" />
                         <input type="email" value={user.email} onChange={ev => setUser({...user, email: ev.target.value})} placeholder="Email" />
                         <input type="password" onChange={ev => setUser({...user, password: ev.target.value})} placeholder="Password" />
                         <input type="password" onChange={ev => setUser({...user, password_confirmation: ev.target.value})} placeholder="Password Confirmation" />

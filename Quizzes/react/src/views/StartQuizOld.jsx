@@ -4,7 +4,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import { ContextProvider, useStateContext } from "../contexts/ContextProvider";
 import QuizAnswersQuestionBlockBuilder from "../components/QuizAnswersQuestionBlockBuilder";
 
-export default function StartQuiz() {
+export default function StartQuizOld() {
     const {user, token, notification, setUser, setToken} = useStateContext();
     const [newComponentCounter, setNewComponentCounter] = useState(null);
     const {id} = useParams()
@@ -215,9 +215,17 @@ console.log(score);
                         </>)
                     }
 
-
-                    </>}
-                {start && <button onClick={sendResult} className="btn">Answer</button>}                
+                    {start && (question.data.map((quest, i = 0) => {
+                        i = i + 1;
+                        if (quest.quiz_id == id) {
+                        return (<>{inc_y()}
+                        <QuizAnswersQuestionBlockBuilder score={score} setScore={setScore}
+                        quest={quest} y={y} i={i} setAnswer={setAnswer} 
+                        question={question} mainID={id} id={quest.id} answer={answer} />
+                                </>)
+                                }}))}
+                                </>}
+                    {start && <button onClick={sendResult} className="btn">Answer</button>}                
             </div>
             
 

@@ -6,7 +6,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 export default function Quizzes() {
     const [quizzes, setQuizzes] = useState([]);
     const [loading, setLoading] = useState(false);
-    const {setNotification} = useStateContext();
+    const {setNotification, user} = useStateContext();
 
     useEffect(()=>{
         getQuizzes();
@@ -37,6 +37,8 @@ export default function Quizzes() {
         })
     }
 
+    console.log(user.role);
+
     return (
         <div>
             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
@@ -51,7 +53,7 @@ export default function Quizzes() {
                             <th>Title</th>
                             <th>Subject</th>
                             <th>About</th>
-                            <th>Max Score</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     {loading && 

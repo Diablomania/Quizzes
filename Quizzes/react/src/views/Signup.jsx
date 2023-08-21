@@ -6,6 +6,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 
 export default function Signup() {
     const nameRef = useRef();
+    const roleRef = useRef();
     const emailRef = useRef();
     const passwordRef = useRef();
     const passwordConfirmationRef = useRef();
@@ -18,6 +19,7 @@ export default function Signup() {
         const payload = {
             name: nameRef.current.value,
             email: emailRef.current.value,
+            role: "guest",
             password: passwordRef.current.value,
             password_confirmation: passwordConfirmationRef.current.value,
         }
@@ -49,7 +51,7 @@ export default function Signup() {
                             ))}
                         </div>
                     }
-                    <input ref={nameRef} placeholder="Full Name" />
+                    <input ref={nameRef} placeholder="Full Name" />      
                     <input ref={emailRef} type="email" placeholder="Email Address" />
                     <input ref={passwordRef} type="password" placeholder="Password" />
                     <input ref={passwordConfirmationRef} type="password" placeholder="Password Confirmation" />

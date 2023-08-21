@@ -6,7 +6,7 @@ import { useStateContext } from "../contexts/ContextProvider";
 export default function User() {
     const [users, setUsers] = useState([]);
     const [loading, setLoading] = useState(false);
-    const {setNotification} = useStateContext();
+    const {setNotification, user} = useStateContext();
 
     useEffect(()=>{
         getUsers();
@@ -37,7 +37,7 @@ export default function User() {
         })
     }
 
-    return (
+    return ((user.role == "admin") ?
         <div>
             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                 <h1>Users</h1>
@@ -82,5 +82,7 @@ export default function User() {
                 </table>
             </div>
         </div>
+        :
+        (<h1>You must be admin for editing Users!</h1>)
     )
 }

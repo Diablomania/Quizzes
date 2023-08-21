@@ -26,6 +26,7 @@ class StoreResultRequest extends FormRequest
             'quiz_id' => 'required|integer',
             'user_id' => 'required|integer',
             'result' => 'required|integer',
+            'result_sec' => 'required|integer',
         ];
     }
 }

@@ -20,5 +20,6 @@ class Result extends Model
         'user_id',
         'quiz_id',
         'result',
+        'result_sec',
     ];
 }

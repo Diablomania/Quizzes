@@ -7,10 +7,11 @@ import AnswersQuestionBlockBuilder from "../components/AnswersQuestionBlockBuild
 export default function QuizForm() {
     const [newComponentCounter, setNewComponentCounter] = useState(null);
     const {id} = useParams()
+    const [isAdmin, setAdmin] = useState("guest");
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true)
     const [errors, setErrors] = useState(null);
-    const {setNotification} = useStateContext();
+    const {setNotification, user} = useStateContext();
     const [quiz, setQuiz] = useState({
         id: null,
         title: '',
@@ -216,7 +217,7 @@ let inc_y = () => {
     y = y + 1;
 }
 
-    return (
+    return ((user.role == "admin") ?
         <>
         {quiz.id && <h1>Update quiz: {quiz.title}</h1>}
             <div className="card animated fadeInDown">
@@ -247,5 +248,7 @@ let inc_y = () => {
                                 </>}                
             </div>
         </>
+        :
+        (<h1>You must be admin for editing quizes!</h1>)
     )
 }
